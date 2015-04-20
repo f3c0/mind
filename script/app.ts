@@ -1,22 +1,18 @@
 /// <reference path='EventTest.ts' />
 
+function eventCreator(message) {
+    return (source) => {
+        console.info(message);
+        console.info(source);
+    }
+}
+
 window.addEventListener('load', () => {
     var et = new EventTest();
 
-    et.addEventListener("click", function (source) {
-        console.info("click 1");
-        console.info(source);
-    });
-
-    et.addEventListener("select", function (source) {
-        console.info("select 1");
-        console.info(source);
-    });
-
-    et.addEventListener("click", function (source) {
-        console.info("click 2");
-        console.info(source);
-    });
+    et.addEventListener("click", eventCreator("click 1"));
+    et.addEventListener("select", eventCreator("select 1"));
+    et.addEventListener("click", eventCreator("click 2"));
 
     et.triggerEvent("click", "HelloClick");
     et.triggerEvent("select", "HelloSelect");
