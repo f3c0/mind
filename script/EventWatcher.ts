@@ -1,5 +1,5 @@
 /// <reference path='IEvent.ts' />
-class EventTest implements IEvent {
+class EventWatcher implements IEvent {
 
     events:{[index:string]:IEventHandler[]};
 
@@ -15,7 +15,9 @@ class EventTest implements IEvent {
     }
 
     triggerEvent(name:string, source:any):void {
-        this.events[name].forEach((handler) => handler(source));
+        if (this.events[name] !== undefined) {
+            this.events[name].forEach((handler) => handler(source));
+        }
     }
 
 }
