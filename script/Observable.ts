@@ -2,7 +2,15 @@
 
 class Observable extends EventWatcher {
 
-    propertyChanged(name:string):void {
-        this.triggerEvent('propertyChanged', name);
+    private static getPropertyChangedEventName(property:string):string {
+        return 'propertyChanged[' + property + ']';
+    }
+
+    propertyChanged(property:string):void {
+        this.triggerEvent(Observable.getPropertyChangedEventName(property), property);
+    }
+
+    onPropertyChange(property:string, handler:IEventHandler):void {
+        this.addEventListener(Observable.getPropertyChangedEventName(property), handler);
     }
 }

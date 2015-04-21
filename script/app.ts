@@ -28,7 +28,7 @@ window.addEventListener('load', () => {
 window.addEventListener('load', () => {
     var c = new Circle();
 
-    c.addEventListener('propertyChanged', (source) => {
+    c.onPropertyChange('R', (source) => {
         console.info('changed');
         (<HTMLInputElement>document.getElementById('circle-area')).value = c.Area.toString();
     });
