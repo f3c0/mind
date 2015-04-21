@@ -1,7 +1,7 @@
 /// <reference path='EventWatcher.ts' />
 /// <reference path='Circle.ts' />
 
-function eventCreator(message) {
+function eventCreator(message:string):IEventHandler {
     return (source) => {
         console.info(message);
         console.info(source);
