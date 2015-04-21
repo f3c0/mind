@@ -1,11 +1,7 @@
 /// <reference path='IEvent.ts' />
 class EventWatcher implements IEvent {
 
-    events:{[index:string]:IEventHandler[]};
-
-    constructor() {
-        this.events = {};
-    }
+    events:{[index:string]:IEventHandler[]} = {};
 
     addEventListener(name:string, handler:IEventHandler):void {
         if (this.events[name] === undefined) {
