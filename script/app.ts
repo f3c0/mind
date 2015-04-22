@@ -39,3 +39,24 @@ window.addEventListener('load', () => {
         //console.info(source);
     })
 });
+
+// bind test
+window.addEventListener('load', () => {
+    var circle = new Circle();
+    
+    var elements = document.querySelectorAll('[data-bind-value]');
+    for (var i = 0; i < elements.length; i++) {
+        elements.item(i).addEventListener('keyup', function (source) {
+            var target:HTMLInputElement = <HTMLInputElement>source.target;
+            eval(target.getAttribute('data-bind-value') + " = '" + target.value + "';");
+        });
+    }
+    
+    //var elements = document.querySelectorAll('[data-bind-text]');
+    //for (var i = 0; i < elements.length; i++) {
+    //    elements.item(i).addEventListener('keyup', function (source) {
+    //        var target:HTMLElement = <HTMLElement>source.target;
+    //        target.textContent = eval(target.getAttribute('data-bind-text'));
+    //    });
+    //}
+});
